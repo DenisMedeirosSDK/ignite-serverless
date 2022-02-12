@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  dynamodb-local:
+    command: '-jar DynamoDBLocal.jar -sharedDb -dbPath ./data'
+    image: 'amazon/dynamodb-local:latest'
+    container_name: dynamodb-local
+    ports:
+      - 8000:8000
+    volumes:
+      - './.dynamodb:/home/dynamodblocal/data'
+    working_dir: /home/dynamodblocal
+    environment:
+      AWS_ACCESS_KEY_ID: 'x'
+      AWS_SECRET_ACCESS_KEY: 'x'
+      IS_OFFLINE: 'true'
+      SLS_DEBUG: 'true'
